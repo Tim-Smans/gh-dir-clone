@@ -5,8 +5,12 @@ import path from 'path';
 import ora from 'ora';
 import chalk from 'chalk';
 
-const program = new Command();
 
+/*
+Using Command from Commander to register a new CLI command. We give it a name,
+description, the arguments and some options and parse the command.
+*/
+const program = new Command();
 program
     .name('gitdirclone')
     .description('Clone a specific directory from a github repo')
@@ -17,12 +21,20 @@ program
     .parse(process.argv);
 
 
+// We read the arguments from our command.
 const [repo, directory] = program.args;
 const options = program.opts();
+// We use this to display the fancy CLI spinners.
 const spinner = ora();
 
 const BASE_URL = 'https://api.github.com/repos';
 
+/*
+This function will retrieve the directory using the github API,
+it takes the owner of the repo, the repo itself and the directory path.
+As well as posibly the branch and outputh path to retrieve the directory and download
+it to the local device.
+*/
 const fetchDirectory = async (owner, repo, dirPath, branch, outputPath) => {
     spinner.start(`Fetching directory ${dirPath} from ${repo}@${branch}`);
     try {
@@ -36,16 +48,7 @@ const fetchDirectory = async (owner, repo, dirPath, branch, outputPath) => {
 
       await fs.mkdir(outputPath, { recursive: true });
   
-      for (const item of items) {
-        if (item.type === 'file') {
-          const fileRes = await axios.get(item.download_url, { responseType: 'arraybuffer' });
-          const filePath = path.join(outputPath, item.name);
-          await fs.writeFile(filePath, fileRes.data);
-          spinner.succeed(`Downloaded ${item.path}`);
-        } else if (item.type === 'dir') {
-          await fetchDirectory(owner, repo, item.path, branch, path.join(outputPath, item.name));
-        }
-      }
+      await downloadItems(items, outputPath, owner, repo, branch);
   
       spinner.succeed(chalk.green(`Directory ${dirPath} successfully cloned.`));
     } catch (err) {
@@ -55,7 +58,9 @@ const fetchDirectory = async (owner, repo, dirPath, branch, outputPath) => {
 
 }
 
+/*
 
+*/
 const getOutputDirectory = (baseDir, repoDir) => {
     if(baseDir !== "./basedOutput"){
         return baseDir;
@@ -67,8 +72,22 @@ const getOutputDirectory = (baseDir, repoDir) => {
 
 }
 
+const downloadItems = async (items, outputPath, owner, repo, branch) => {
+    for (const item of items) {
+        if (item.type === 'file') {
+            const fileRes = await axios.get(item.download_url, { responseType: 'arraybuffer' });
+            const filePath = path.join(outputPath, item.name);
+            await fs.writeFile(filePath, fileRes.data);
+            spinner.succeed(`Downloaded ${item.path}`);
+        } else if (item.type === 'dir') {
+            await fetchDirectory(owner, repo, item.path, branch, path.join(outputPath, item.name));
+        }
+    }
+}
+
 const [owner, repository] = repo.split('/');
   
 await fetchDirectory(owner, repository, directory, options.branch, options.output);
 
 spinner.succeed(chalk.bgCyan.bold("Finished cloning into: ") + chalk.bgGreen.bold(`'${getOutputDirectory(directory, repository)}'`) + chalk.bgCyan.bold(" directory!"))
+

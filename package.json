@@ -1,6 +1,6 @@
 {
 	"name": "ghdirclone",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "CLI tool to clone a specific directory from a GitHub repo",
 	"main": "index.js",
 	"bin": {
