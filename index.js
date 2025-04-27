@@ -59,7 +59,9 @@ const fetchDirectory = async (owner, repo, dirPath, branch, outputPath) => {
 }
 
 /*
-
+This function starts out by checking if an option for a custom directory was given.
+If it was not it will get the repository directory path and take the last keyword of the path
+as a directory name on the local machine.
 */
 const getOutputDirectory = (baseDir, repoDir) => {
     if(baseDir !== "./basedOutput"){
@@ -72,6 +74,9 @@ const getOutputDirectory = (baseDir, repoDir) => {
 
 }
 
+/*
+Uses fs to download the files from the api response and save them locally to the right path
+*/
 const downloadItems = async (items, outputPath, owner, repo, branch) => {
     for (const item of items) {
         if (item.type === 'file') {
