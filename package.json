@@ -1,0 +1,38 @@
+{
+	"name": "ghdirclone",
+	"version": "1.0.1",
+	"description": "CLI tool to clone a specific directory from a GitHub repo",
+	"main": "index.js",
+	"bin": {
+		"ghdirclone": "./index.js"
+	},
+	"scripts": {
+		"start": "node index.js"
+	},
+	"keywords": [
+		"github",
+		"clone",
+		"directory",
+		"cli",
+		"tool"
+	],
+	"author": "Tim Smans",
+	"license": "MIT",
+	"dependencies": {
+		"axios": "^1.6.7",
+		"chalk": "^5.3.0",
+		"commander": "^11.1.0",
+		"gitdirclone": "link:../../../../.local/share/pnpm/global/5/node_modules/gitdirclone",
+		"ora": "^7.0.1",
+		"raspberry_pi": "link:../../../../.local/share/pnpm/global/5/node_modules/raspberry_pi",
+		"student-attendance-tracker": "link:../../../../.local/share/pnpm/global/5/node_modules/Tim-Smans/student-attendance-tracker"
+	},
+	"type": "module",
+	"pnpm": {
+		"overrides": {
+			"gitdirclone": "link:../../../../.local/share/pnpm/global/5/node_modules/gitdirclone",
+			"student-attendance-tracker": "link:../../../../.local/share/pnpm/global/5/node_modules/Tim-Smans/student-attendance-tracker",
+			"raspberry_pi": "link:../../../../.local/share/pnpm/global/5/node_modules/raspberry_pi"
+		}
+	}
+}
