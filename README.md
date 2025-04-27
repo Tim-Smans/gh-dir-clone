@@ -69,9 +69,7 @@ Created by **Tim Smans**.
 Feel free to contribute or suggest improvements!
 
 ## Todo
-If you have any requests to add please send me a message at: 
-
-`tim.smans@outlook.com`
+If you have any requests to add please leave a message in the discussions tab of the repository
 
 - Add support for private repositories
 - Add a way to support the github API personal access tokens
