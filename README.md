@@ -31,11 +31,6 @@ Before using ghdirclone, make sure you have:
 
 ## Instalation
 
-### npm:
-```bash
-npm install -g ghdirclone
-```
-
 ### pnpm:
 ```bash
 pnpm install -g ghdirclone
