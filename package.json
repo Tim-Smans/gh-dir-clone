@@ -1,27 +1,29 @@
 {
-	"name": "ghdirclone",
-	"version": "1.0.2",
-	"description": "CLI tool to clone a specific directory from a GitHub repo",
-	"main": "index.js",
-	"bin": {
-		"ghdirclone": "./index.js"
-	},
-	"scripts": {
-	},
-	"keywords": [
-		"github",
-		"clone",
-		"directory",
-		"cli",
-		"tool"
-	],
-	"author": "Tim Smans",
-	"license": "MIT",
-	"dependencies": {
-		"axios": "^1.6.7",
-		"chalk": "^5.3.0",
-		"commander": "^11.1.0",
-		"ora": "^7.0.1"
-	},
-	"type": "module"
+  "name": "ghdirclone",
+  "version": "1.0.2",
+  "description": "CLI tool to clone a specific directory from a GitHub repo",
+  "main": "index.js",
+  "bin": {
+    "ghdirclone": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "github",
+    "clone",
+    "directory",
+    "cli",
+    "tool"
+  ],
+  "author": "Tim Smans",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "ora": "^7.0.1",
+    "conf": "^12.0.0"
+  },
+  "type": "module"
 }
