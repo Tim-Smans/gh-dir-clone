@@ -7,7 +7,6 @@
 		"ghdirclone": "./index.js"
 	},
 	"scripts": {
-		"start": "node index.js"
 	},
 	"keywords": [
 		"github",
