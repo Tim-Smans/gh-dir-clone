@@ -22,17 +22,7 @@
 		"axios": "^1.6.7",
 		"chalk": "^5.3.0",
 		"commander": "^11.1.0",
-		"gitdirclone": "link:../../../../.local/share/pnpm/global/5/node_modules/gitdirclone",
-		"ora": "^7.0.1",
-		"raspberry_pi": "link:../../../../.local/share/pnpm/global/5/node_modules/raspberry_pi",
-		"student-attendance-tracker": "link:../../../../.local/share/pnpm/global/5/node_modules/Tim-Smans/student-attendance-tracker"
+		"ora": "^7.0.1"
 	},
-	"type": "module",
-	"pnpm": {
-		"overrides": {
-			"gitdirclone": "link:../../../../.local/share/pnpm/global/5/node_modules/gitdirclone",
-			"student-attendance-tracker": "link:../../../../.local/share/pnpm/global/5/node_modules/Tim-Smans/student-attendance-tracker",
-			"raspberry_pi": "link:../../../../.local/share/pnpm/global/5/node_modules/raspberry_pi"
-		}
-	}
+	"type": "module"
 }
